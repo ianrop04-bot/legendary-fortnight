@@ -6,9 +6,9 @@ const path = require('path');
 const qrcode = require('qrcode-terminal');
 const cors= require('cors')
 const app = express();
+app.use(cors())
 app.use(express.json());
 
-app.use(cors());
 
 // Use /tmp directory (Vercel allows read/write here)
 const TMP_DIR = '/tmp/whatsapp-auth';
