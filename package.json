@@ -1,0 +1,33 @@
+{
+  "name": "whatsapp-bot-vercel",
+  "version": "1.0.0",
+  "description": "WhatsApp Bot with Pairing Code - Deployable on Vercel",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js",
+    "vercel-build": "npm install",
+    "build": "npm install"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "vercel",
+    "whatsapp-bot",
+    "pairing-code"
+  ],
+  "author": "IanRop",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.9",
+    "express": "^4.18.2",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
