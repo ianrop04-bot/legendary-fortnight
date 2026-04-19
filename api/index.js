@@ -7,14 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Session storage
 const AUTH_DIR = '/tmp/auth_info';
 if (!fs.existsSync(AUTH_DIR)) fs.mkdirSync(AUTH_DIR, { recursive: true });
 
 let sock = null;
 let connected = false;
 
-// Auto-start bot
+// Start bot
 (async () => {
     try {
         const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
@@ -37,15 +36,10 @@ let connected = false;
     }
 })();
 
-// Status endpoint
 app.get('/api/status', (req, res) => {
-    res.json({ 
-        connected: connected,
-        ready: connected
-    });
+    res.json({ connected, ready: connected });
 });
 
-// Get pairing code
 app.post('/api/pair/request', async (req, res) => {
     const { phoneNumber } = req.body;
     
@@ -60,17 +54,12 @@ app.post('/api/pair/request', async (req, res) => {
     try {
         const cleanNumber = phoneNumber.replace(/\D/g, '');
         const code = await sock.requestPairingCode(cleanNumber);
-        
-        res.json({ 
-            success: true, 
-            code: code 
-        });
+        res.json({ success: true, code });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
 
-// Send message
 app.post('/api/send', async (req, res) => {
     const { number, message } = req.body;
     
