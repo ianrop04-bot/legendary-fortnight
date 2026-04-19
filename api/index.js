@@ -257,9 +257,7 @@ app.get('/health', (req, res) => {
 });
 
 // Serve frontend
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+
 
 // ============ START BOT ============
 console.log('🚀 Initializing WhatsApp Bot on Vercel...');
