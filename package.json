@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "vercel-build": "npm install"
+    "start":"node index.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.9",
